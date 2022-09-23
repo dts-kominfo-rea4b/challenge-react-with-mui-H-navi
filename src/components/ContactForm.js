@@ -5,10 +5,15 @@
 
 import { Button, Card, CardActions, CardContent, Grid, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import React, { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ handleClick }) => {
     // Form berisi name, phone, email, dan photo url
     // Buatlah state newContact berupa objek sesuai dengan data yang ada
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [photo, setPhoto] = useState('');
 
     return (
         <Card sx={{ minWidth: 275, margin: "25px" }}>
@@ -27,7 +32,10 @@ const ContactForm = () => {
                                 required
                                 id="name-required"
                                 label="Name"
-                                defaultValue=""
+                                value={name}
+                                onChange={(name) => {
+                                    setName(name.target.value);
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -35,7 +43,10 @@ const ContactForm = () => {
                                 required
                                 id="phone-required"
                                 label="Phone"
-                                defaultValue=""
+                                value={phone}
+                                onChange={(phone) => {
+                                    setPhone(phone.target.value);
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -43,7 +54,10 @@ const ContactForm = () => {
                                 required
                                 id="email-required"
                                 label="Email"
-                                defaultValue=""
+                                value={email}
+                                onChange={(email) => {
+                                    setEmail(email.target.value);
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -51,7 +65,10 @@ const ContactForm = () => {
                                 required
                                 id="photo-required"
                                 label="Photo Url"
-                                defaultValue=""
+                                value={photo}
+                                onChange={(photo) => {
+                                    setPhoto(photo.target.value);
+                                }}
                             />
                         </Grid>
                     </div>
@@ -59,7 +76,20 @@ const ContactForm = () => {
             </CardContent>
             <CardActions>
                 <Grid item xs={12}>
-                    <Button variant="contained" color="success" sx={{ width: '90%' }}>
+                    <Button
+                        variant="contained"
+                        color="success"
+                        sx={{ width: '90%' }}
+                        onClick={() => {
+                            handleClick(name, phone, email, photo);
+                            // handleClick(phone);
+                            // handleClick(email);
+                            // handleClick(photo);
+                            setName('');
+                            setPhone('');
+                            setEmail('');
+                            setPhoto('');
+                        }}>
                         Add New
                     </Button>
                 </Grid>

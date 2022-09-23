@@ -11,12 +11,12 @@ const Header = () => {
     <div className='header' container spacing={2}>
       <Grid>
         <Grid item xs={12}>
-          <div justifyContent="center" alignItems="center">
+          <div>
             <h1>Call a Friend</h1>
           </div>
         </Grid>
         <Grid item xs={12}>
-          <div justifyContent="center" alignItems="center">
+          <div>
             <h5>Your friendly contact app</h5>
           </div>
         </Grid>
