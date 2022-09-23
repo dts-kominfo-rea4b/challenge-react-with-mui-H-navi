@@ -1,5 +1,11 @@
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
+import React from 'react';
+import ContactApp from './containers/ContactApp';
 // Uncomment untuk memuat daftar kontak
 // import contactsJSON from './data/contacts.json';
 const App = () => {
@@ -12,6 +18,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <ContactApp/>
     </div>
   );
 };
