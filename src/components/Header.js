@@ -8,7 +8,7 @@ import React from 'react';
 // Subtitle: Your friendly contact app
 const Header = () => {
   return (
-    <div className='header' container spacing={2}>
+    <div className='header' spacing={2}>
       <Grid>
         <Grid item xs={12}>
           <div>

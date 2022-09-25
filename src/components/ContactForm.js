@@ -3,17 +3,32 @@
 // dan Card
 // https://mui.com/material-ui/react-card/#basic-card
 
-import { Button, Card, CardActions, CardContent, Grid, TextField, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
 const ContactForm = ({ handleClick }) => {
     // Form berisi name, phone, email, dan photo url
     // Buatlah state newContact berupa objek sesuai dengan data yang ada
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [photo, setPhoto] = useState('');
+    const [newContact, setNewContact] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        photo: ''
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setNewContact({
+            ...newContact,
+            [name]: value,
+        });
+    };
+    // const [name, setName] = useState('');
+    // // const [phone, setPhone] = useState('');
+    // // const [email, setEmail] = useState('');
+    // // const [photo, setPhoto] = useState('');
 
     return (
         <Card sx={{ minWidth: 275, margin: "25px" }}>
@@ -30,45 +45,41 @@ const ContactForm = ({ handleClick }) => {
                         <Grid item xs={12}>
                             <TextField
                                 required
-                                id="name-required"
+                                id="name"
                                 label="Name"
-                                value={name}
-                                onChange={(name) => {
-                                    setName(name.target.value);
-                                }}
+                                name="name"
+                                value={newContact.name}
+                                onChange={handleChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 required
-                                id="phone-required"
+                                id="phone"
                                 label="Phone"
-                                value={phone}
-                                onChange={(phone) => {
-                                    setPhone(phone.target.value);
-                                }}
+                                name="phone"
+                                value={newContact.phone}
+                                onChange={handleChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 required
-                                id="email-required"
+                                id="email"
                                 label="Email"
-                                value={email}
-                                onChange={(email) => {
-                                    setEmail(email.target.value);
-                                }}
+                                name="email"
+                                value={newContact.email}
+                                onChange={handleChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 required
-                                id="photo-required"
+                                id="photo"
+                                name="photo"
                                 label="Photo Url"
-                                value={photo}
-                                onChange={(photo) => {
-                                    setPhoto(photo.target.value);
-                                }}
+                                value={newContact.photo}
+                                onChange={handleChange}
                             />
                         </Grid>
                     </div>
@@ -80,15 +91,23 @@ const ContactForm = ({ handleClick }) => {
                         variant="contained"
                         color="success"
                         sx={{ width: '90%' }}
-                        onClick={() => {
-                            handleClick(name, phone, email, photo);
+                        onClick={(event) => {
+                            event.preventDefault();
+                            handleClick(newContact);
+                            setNewContact({
+                                name: '',
+                                phone: '',
+                                email: '',
+                                photo:'',
+                            });
+                            // handleClick(name, phone, email, photo);
                             // handleClick(phone);
                             // handleClick(email);
                             // handleClick(photo);
-                            setName('');
-                            setPhone('');
-                            setEmail('');
-                            setPhoto('');
+                            // setName('');
+                            // setPhone('');
+                            // setEmail('');
+                            // setPhoto('');
                         }}>
                         Add New
                     </Button>
