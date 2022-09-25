@@ -24,7 +24,7 @@ const App = () => {
   const addContact = (newContact) => {
     setContacts([...contacts, newContact]);
   };
-
+ 
   // const handleClick = (name, phone, email, photo) => {
   //   setContacts([...contacts, { nama: name, hp: phone, email: email, foto: photo, id: contacts.length + 1 }]);
   // setContacts([...phones, { hp: phone, phone_id: phones.length + 1 }]);
